@@ -5,14 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<p id="abcd"></p>
 <button onclick="init()">Load</button>
 <script>
     function loadJSON(callback) {
-alert("Load JSON");
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', 'examples.json', true); // Replace 'my_data' with the path to your file
-        alert("get");
         xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
                 // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -21,11 +20,12 @@ alert("Load JSON");
         };
         xobj.send(null);
     }
+
     function init() {
-        alert("Hello");
         loadJSON(function(response) {
             // Parse JSON string into object
             var actual_JSON = JSON.parse(response);
+            document.getElementById("abcd")
         });
     }
 </script>
