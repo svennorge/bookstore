@@ -1,0 +1,13 @@
+.UserDataInput {
+    background: aqua;
+    font-family: "Apple Chancery";
+
+}
+
+.buttons {
+    background: #fabf10;
+    font-size: 12px;
+    border-color: transparent;
+    border-style: none;
+    color: #fabf10;
+}

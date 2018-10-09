@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Access a JSON object using dot notation:</p>
+
+<p id="Name"></p>
+<p id="Age"></p>
+<p id="Car"></p>
+
+<script>
+    var myObj, x, y, z;
+    myObj = {
+        "name":null,
+        "age":null,
+        "car":null,
+        "email": null,
+        "phone": null
+    };
+    myObj.name = "Frank";
+    myObj.age = 40
+    myObj.car = "BMW"
+    x = myObj.name;
+    y = myObj.age;
+    z = myObj.car;
+    document.getElementById("Name").innerHTML = x;
+    document.getElementById("Age").innerHTML = y;
+    document.getElementById("Car").innerHTML = z;
+</script>
+
+</body>
+</html>

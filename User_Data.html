@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserDate</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+
+<div class="UserDataInput">
+    <label for="fstname">First Name
+        <input type="text" id="fstname" name="fstname" placeholder="John">
+    </label>
+    <br>
+    <label for="lstname">Last Name
+        <input id="lstname" type="text" name="lstname" placeholder="Doe">
+    </label>
+    <br>
+    <label for="adress1">Adress Line 1
+        <input id="adress1" type="text" name="address1" placeholder="Musterstrasse ">
+    </label>
+    <br>
+    <label for="adress2">Adress Line 2
+        <input id="adress2" type="text" name="address2" placeholder="2. Hinterhof">
+    </label>
+    <br>
+    <label for="postcode">Postcode
+        <input id="postcode" type="text" name="postcode" placeholder="12345">
+    </label>
+    <br><label for="city">City
+    <input id="city" type="text" name="City" placeholder="Berlin">
+</label>
+    <br>
+    <label for="phone">Phone
+        <input id="phone" type="tel" name="phone" placeholder="+49 (0)89 000 000 0">
+    </label>
+    <br>
+    <label for="email">eMail
+        <input id="email" type="email" name="email" placeholder="john@doe.com">
+    </label>
+    <br>
+</div>
+
+<div class="buttons">
+    <button onclick="SaveLocal()">Save</button>
+    <button onclick="LoadLocal()">Load</button>
+    <button onclick="Reset()">Reset</button>
+    <button onClick="saveAsFile()">Save as JSON</button>
+    <button onClick="loadFromFile()">Load JSON from file</button>
+
+</div>
+</body>
+</html>

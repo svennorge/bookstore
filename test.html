@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method='post' id='myform'>
+    <input type="text" id="meta_title" name="seo_meta_title">
+    <input type="text" id="meta_description" name="seo_meta_description">
+    <input type="text" id="header" name="header">
+
+    <!-- Submit form-->
+    <input type="submit" id="save" value="Create">
+
+    <!-- buttons-->
+    <button onclick="save()">save</button>
+    <button onclick="load()">load</button>
+</form>
+<script>
+    $('#save').on('click', function(){
+        var post_vars = $('#myform').serializeArray();
+        localStorage.setItem(id, post_vars);
+    });
+</script>
+</body>
+</html>
