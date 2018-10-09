@@ -2,6 +2,7 @@ let myLoad;
 
 let mySave;
 mySave = {
+    "Id": null,
     "fstname": null,
     "lstname": null,
     "adress1": null,
@@ -10,9 +11,12 @@ mySave = {
     "city": null,
     "phone": null,
     "email": null,
-    "Children": {
-        "Child1": null,
-        "Child2": null
+    "Communication": {
+        "Home": null,
+        "Fax": null,
+        "Mobile": null,
+        "Work": null,
+        "work Mobile": null,
     }};
 
 function download(content, fileName, contentType) {
