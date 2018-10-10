@@ -1,3 +1,8 @@
+#!/usr/bin/python
+
+import psycopg2
+from config import config
+
 def insert_vendor_list(vendor_list):
     """ insert multiple vendors into the vendors table  """
     sql = "INSERT INTO vendors(vendor_name) VALUES(%s)"

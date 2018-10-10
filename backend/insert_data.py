@@ -36,4 +36,4 @@ def insert_vendor(vendor_name):
 
 if __name__ == '__main__':
     # insert one vendor
-    insert_vendor("3M Co.")
+    insert_vendor("next USer")
