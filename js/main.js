@@ -10,9 +10,9 @@ mySave = {
     "city": null,
     "phone": null,
     "email": null,
-    "Children": {
-        "Child1": null,
-        "Child2": null
+    "Communication": {
+        "Mobile": null,
+        "Home": null
     }};
 
 function download(content, fileName, contentType) {
@@ -40,7 +40,6 @@ function SaveLocal() {
     mySave.phone = document.getElementById("phone").value;
     localStorage.setItem("Contact.json", JSON.stringify(mySave));
     download(JSON.stringify(mySave), 'Contact.json', 'application/json');
-
 }
 
 
@@ -79,10 +78,3 @@ function LoadTraining(){
     let myTraining;
     myTraining = JSON.parse(localStorage.getItem("Training"));
 }
-
-
-// Load Data from local Storage
-// onLOad of Page
-document.addEventListener('DOMContentLoaded', function() {
-    LoadLocal();
-}, false);
