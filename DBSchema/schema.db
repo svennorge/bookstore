@@ -1,0 +1,51 @@
+CREATE TABLE IF NOT EXISTS t_user
+(
+  name VARCHAR(20) NOT NULL,
+  age  INTEGER,
+  city VARCHAR(55)
+);
+
+COMMENT ON TABLE t_user IS 'user';
+
+CREATE TABLE IF NOT EXISTS vendors
+(
+  vendor_id   SERIAL       NOT NULL
+    CONSTRAINT vendors_pkey
+    PRIMARY KEY,
+  vendor_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS parts
+(
+  part_id   SERIAL       NOT NULL
+    CONSTRAINT parts_pkey
+    PRIMARY KEY,
+  part_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS part_drawings
+(
+  part_id        INTEGER    NOT NULL
+    CONSTRAINT part_drawings_pkey
+    PRIMARY KEY
+    CONSTRAINT part_drawings_part_id_fkey
+    REFERENCES parts
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  file_extension VARCHAR(5) NOT NULL,
+  drawing_data   BYTEA      NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS vendor_parts
+(
+  vendor_id INTEGER NOT NULL
+    CONSTRAINT vendor_parts_vendor_id_fkey
+    REFERENCES vendors
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  part_id   INTEGER NOT NULL
+    CONSTRAINT vendor_parts_part_id_fkey
+    REFERENCES parts
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT vendor_parts_pkey
+  PRIMARY KEY (vendor_id, part_id)
+);
+
