@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
+import psycopg2
+from config import config
 
 app = Flask(__name__)
 api = Api(app)
@@ -22,9 +24,32 @@ users = [
      }
  ]
 
+
+def get_vendors(name):
+    """ query data from the vendors table """
+    conn = None
+    try:
+        params = config()
+        conn = psycopg2.connect(**params)
+        cur = conn.cursor()
+        cur.execute("SELECT array_to_json(array_agg(row_to_json(users))) FROM users where name = %1", name)
+        print("The number of parts: ", cur.rowcount)
+        row = cur.fetchone()
+        user = row
+        while row is not None:
+            row = cur.fetchone()
+        cur.close()
+        return user
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
 class User(Resource):
      def get(self, name):
-         for user in users:
+         dbuser = get_vendors(name)
+         for user in dbuser:
              if(name == user["name"]):
                  return user, 200
          return "User not found", 404

@@ -3,22 +3,22 @@
 import psycopg2
 from config import config
 
-def get_vendors():
+def get_vendors(param1):
     """ query data from the vendors table """
     conn = None
     try:
         params = config()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        cur.execute("SELECT vendor_id, vendor_name FROM vendors ORDER BY vendor_name")
-        print("The number of parts: ", cur.rowcount)
+    #    cur.execute("SELECT * FROM users")
+        cur.execute("SELECT array_to_json(array_agg(row_to_json(users))) FROM users WHERE name = %s", (param1,))
+        print(param1)
         row = cur.fetchone()
-
+        user = row
         while row is not None:
-            print(row)
             row = cur.fetchone()
-
         cur.close()
+        return user
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
@@ -27,4 +27,6 @@ def get_vendors():
 
 
 if __name__ == '__main__':
-    get_vendors()
+    name = 'sven'
+    Users = get_vendors(name)
+    print(Users)
